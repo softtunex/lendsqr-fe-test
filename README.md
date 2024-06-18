@@ -1,46 +1,49 @@
-# Getting Started with Create React App
+Lendsqr Frontend Engineering Assessment - README
+Project Overview
+This repository contains the solution for the Lendsqr Frontend Engineering Assessment. The primary objective of this assessment is to create a responsive, functional, and visually appealing frontend interface based on the design specifications provided in the Figma link.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Login Detail
 
-## Available Scripts
+Any Email and Password would work for this as Api authentication was implemented or provided
 
-In the project directory, you can run:
+Features Implemented
+Login Page: Users can log in and log out.
+Dashboard: Displays user information.
+User Details: Admins can view users details.
+Responsive Design: The application is fully responsive and works on various screen sizes.
+API and Mock Data Integration: The frontend communicates with an api and a mock data from mocky.io and json-generator.com to fetch and display data.
 
-### `npm start`
+Folder and Component Breakdown
+Components
+LoginForm.tsx: Handles user login functionality.
+Dashboard.tsx: Main dashboard displaying user statistics and all users.
+UserCard.tsx: Displays user statistics in a card format.
+UserTable.tsx: Displays all users.
+UserFilters.tsx: Allows to filter by specify informatiom.
+Navbar.tsx: Navigation bar for the application.
+Sidebar.tsx: Sidebar navigation for different sections.
+Modal.tsx: Reusable modal component for dialogs.
+Pages
+LoginPage.tsx: Login page for the application.
+DashboardPage.tsx: Dashboard page with user statistics.
+UserDetailsPage.tsx: Individual user information
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Styles
+App.scss: Global styles for the application.
+Component-specific styles: Each component has its own SCSS file for modular styling.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Utilities
+mockData.ts: Mock Data for making getting user Data.
+localStorageUtil.ts: Save user information into localstorage.
+utils.js: To filter by avalaible organizations and status.
 
-### `npm test`
+Design Considerations
+The design and implementation follow the Figma design specifications provided. Key considerations include:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Consistency: Adhering to the design system for a consistent look and feel.
+Accessibility: Ensuring the application is accessible to all users, including those with disabilities.
+Performance: Optimizing the application for fast load times and smooth interactions.
+Scalability: Writing modular and reusable code to facilitate future enhancements.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Conclusion
+This project demonstrates the implementation of a modern frontend application using React and TypeScript. By following the design specifications and adhering to best practices, the application provides a robust and user-friendly interface for managing users and viewing statistics.

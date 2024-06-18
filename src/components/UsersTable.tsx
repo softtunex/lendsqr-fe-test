@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import { users as mockUsers } from "../utils/mockData";
+import { getUniqueValues } from "../utils/utils";
+import { saveUserDetails } from "../utils/localStorageUtil";
 import UserFilters from "./UserFilters";
 import Modal from "./Modal";
 import { FaEye, FaBan, FaUserCheck, FaEllipsisV } from "react-icons/fa";
 import { IoFilter } from "react-icons/io5";
 import "./UsersTable.scss";
-import { getUniqueValues } from "../utils/utils";
 
 const UsersTable: React.FC = () => {
   const [users, setUsers] = useState(mockUsers);
@@ -90,6 +91,13 @@ const UsersTable: React.FC = () => {
 
   const handlePageClick = (data: any) => {
     setCurrentPage(data.selected);
+  };
+
+  const handleViewDetails = (user: any) => {
+    console.log("user", user);
+
+    saveUserDetails(user);
+    navigate(`/user-details/${user.id}`);
   };
 
   const offset = currentPage * itemsPerPage;
@@ -184,17 +192,19 @@ const UsersTable: React.FC = () => {
                     onClick={(e) => handleEllipsisClick(e, user.id)}
                   >
                     <FaEllipsisV />
-                    <div className="actions-menu">
-                      <button onClick={() => navigate("/user-details")}>
-                        <FaEye /> View Details
-                      </button>
-                      <button>
-                        <FaBan /> Blacklist User
-                      </button>
-                      <button>
-                        <FaUserCheck /> Activate User
-                      </button>
-                    </div>
+                    {activeMenu === user.id && (
+                      <div className="actions-menu">
+                        <button onClick={() => handleViewDetails(user)}>
+                          <FaEye /> View Details
+                        </button>
+                        <button>
+                          <FaBan /> Blacklist User
+                        </button>
+                        <button>
+                          <FaUserCheck /> Activate User
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </td>
               </tr>

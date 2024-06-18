@@ -20,6 +20,8 @@ import {
   FaCog,
   FaTools,
   FaClipboardList,
+  FaEnvelope,
+  FaSignOutAlt,
 } from "react-icons/fa";
 import "./Sidebar.scss";
 
@@ -29,6 +31,13 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
+  const handleLogout = () => {
+    // Implement the logic to log out the user
+    console.log("User logged out");
+    // Redirect to login page
+    window.location.href = "/";
+  };
+
   return (
     <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
       <div className="toggle-button" onClick={toggleSidebar}>
@@ -108,6 +117,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
           </li>
           <li title="Audit Logs">
             <FaClipboardList /> {isOpen && "Audit Logs"}
+          </li>
+          <li title="System Messages">
+            <FaEnvelope /> {isOpen && "System Messages"}
+          </li>
+          <hr />
+          <li title="Logout" onClick={handleLogout}>
+            <FaSignOutAlt /> {isOpen && "Logout"}
           </li>
         </ul>
       </div>
