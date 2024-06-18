@@ -1,5 +1,5 @@
-Lendsqr Frontend Engineering Assessment - README
-Project Overview
+Lendsqr Frontend Engineering Assessment - README Project Overview
+
 This repository contains the solution for the Lendsqr Frontend Engineering Assessment. The primary objective of this assessment is to create a responsive, functional, and visually appealing frontend interface based on the design specifications provided in the Figma link.
 
 Login Detail
