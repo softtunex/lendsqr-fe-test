@@ -1,12 +1,12 @@
 import React from "react";
 import LoginForm from "../components/LoginForm";
 import "./LoginPage.scss";
-// import illustration from '../assets/images/login-illustration.png';
+import illustration from "../assets/images/pablo-sign-in.svg";
 
 const LoginPage: React.FC = () => (
   <div className="login-page">
     <div className="left-section">
-      <img src={"illustration"} alt="Illustration" />
+      <img src={illustration} alt="Illustration" />
     </div>
     <div className="right-section">
       <div className="login-container">

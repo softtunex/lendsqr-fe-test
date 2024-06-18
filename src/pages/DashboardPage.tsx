@@ -1,18 +1,25 @@
-// src/pages/DashboardPage.tsx
-import React from "react";
-import Navbar from "../components/Navbar";
+import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
 import Dashboard from "../components/Dashboard";
-// import "./DashboardPage.scss";
+import "./DashboardPage.scss";
 
-const DashboardPage: React.FC = () => (
-  <div className="dashboard-page">
-    <Navbar />
-    <div className="content">
-      <Sidebar />
-      <Dashboard />
+const DashboardPage: React.FC = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const handleToggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  return (
+    <div className="dashboard-page">
+      <Navbar />
+      <Sidebar isOpen={isSidebarOpen} toggleSidebar={handleToggleSidebar} />
+      <div className={`main-content ${isSidebarOpen ? "" : "collapsed"}`}>
+        <Dashboard />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default DashboardPage;
