@@ -1,8 +1,9 @@
-// src/types/user.ts
 export interface User {
   id: number;
-  name: string;
+  organization: string;
+  username: string;
   email: string;
   phone: string;
-  address: string;
+  dateJoined: string;
+  status: string;
 }

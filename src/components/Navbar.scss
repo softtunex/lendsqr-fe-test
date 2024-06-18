@@ -1,0 +1,110 @@
+@import "../assets/styles/variables";
+@import "../assets/styles/mixins";
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: white;
+  border-bottom: 1px solid $border-color;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1100; // Ensure it is above the sidebar
+
+  .navbar-left {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      width: 120px; // Adjust the size as needed
+      margin-right: 20px;
+    }
+  }
+
+  .navbar-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background-color: #f5f5f5;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 60%;
+      max-width: 500px;
+
+      .search-input {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 14px;
+        color: #1f2d3d;
+      }
+
+      .search-button {
+        background-color: #10b981;
+        border: none;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: white;
+        font-size: 16px;
+
+        svg {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .navbar-right {
+    display: flex;
+    align-items: center;
+
+    .docs-link {
+      margin-right: 20px;
+      color: $primary-color;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .notification-icon {
+      margin-right: 20px;
+      position: relative;
+      cursor: pointer;
+
+      .bell-icon {
+        font-size: 24px;
+        color: $primary-color;
+      }
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      margin: 0 2rem;
+
+      .username {
+        margin-right: 10px;
+        color: $primary-color;
+        font-weight: 500;
+      }
+
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+    }
+  }
+}

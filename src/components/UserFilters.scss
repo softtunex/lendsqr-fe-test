@@ -1,0 +1,54 @@
+@import "../assets/styles/mixins";
+
+.user-filters {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  @include box-shadow;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 250px;
+
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    label {
+      font-size: 14px;
+      color: #7b8794;
+    }
+
+    input,
+    select {
+      padding: 8px;
+      border: 1px solid #e5e7eb;
+      border-radius: 4px;
+    }
+  }
+
+  .filter-buttons {
+    display: flex;
+    justify-content: space-between;
+
+    .reset-button,
+    .filter-button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .reset-button {
+      background: #f5f5f5;
+      color: #7b8794;
+    }
+
+    .filter-button {
+      background: #10b981;
+      color: white;
+    }
+  }
+}
