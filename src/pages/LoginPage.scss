@@ -3,14 +3,24 @@
   height: 100vh;
   background-color: #f5f5f5;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
   .left-section {
     flex: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: #ffffff;
 
-    img {
+    .logo {
+      max-width: 173px;
+      margin-bottom: 40px;
+    }
+
+    .illustration {
       max-width: 100%;
       height: auto;
     }
