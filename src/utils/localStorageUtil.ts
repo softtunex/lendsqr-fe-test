@@ -1,4 +1,3 @@
-// src/utils/localStorageUtil.ts
 import { User } from "../types/user";
 
 export const saveUserDetails = (user: User) => {

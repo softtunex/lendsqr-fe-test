@@ -1,16 +1,30 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
+import { getUserDetails } from "../utils/localStorageUtil";
+import { User } from "../types/user";
 import "./UserDetailsPage.scss";
 
 const UserDetailsPage: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const [user, setUser] = useState<User | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const userId = Number(id);
+    const userDetails = getUserDetails(userId);
+    setUser(userDetails);
+  }, [id]);
 
   const handleToggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  if (!user) {
+    return <div>User not found</div>;
+  }
 
   return (
     <div className="user-details-page">
@@ -30,18 +44,21 @@ const UserDetailsPage: React.FC = () => {
         <div className="user-details-header">
           <div className="user-info">
             <div style={{ display: "flex", alignItems: "center" }}>
-              <div className="user-avatar">A</div>
+              <div className="user-avatar">{user.avatar}</div>
               <div className="user-basic-info">
-                <h2>Grace Effiom</h2>
-                <p>LSQF587g90</p>
+                <h2>{user.username}</h2>
+                <p>{user.uniqueCode}</p>
               </div>
             </div>
             <div className="user-tier">
-              User's Tier: <span>★★★☆☆</span>
+              User's Tier:{" "}
+              <span>{"★".repeat(user.tier) + "☆".repeat(5 - user.tier)}</span>
             </div>
             <div className="user-account-info">
-              <h2>₦200,000.00</h2>
-              <p>9912345678/Providus Bank</p>
+              <h2>{user.balance}</h2>
+              <p>
+                {user.accountNumber}/{user.bank}
+              </p>
             </div>
           </div>
           <div className="user-details-tabs">
@@ -59,35 +76,35 @@ const UserDetailsPage: React.FC = () => {
             <div className="info-group">
               <div className="info-item">
                 <label>Full Name</label>
-                <p>Grace Effiom</p>
+                <p>{user.personalInfo.fullName}</p>
               </div>
               <div className="info-item">
                 <label>Phone Number</label>
-                <p>07060780922</p>
+                <p>{user.personalInfo.phoneNumber}</p>
               </div>
               <div className="info-item">
                 <label>Email Address</label>
-                <p>grace@gmail.com</p>
+                <p>{user.personalInfo.email}</p>
               </div>
               <div className="info-item">
                 <label>BVN</label>
-                <p>07060780922</p>
+                <p>{user.personalInfo.bvn}</p>
               </div>
               <div className="info-item">
                 <label>Gender</label>
-                <p>Female</p>
+                <p>{user.personalInfo.gender}</p>
               </div>
               <div className="info-item">
                 <label>Marital Status</label>
-                <p>Single</p>
+                <p>{user.personalInfo.maritalStatus}</p>
               </div>
               <div className="info-item">
                 <label>Children</label>
-                <p>None</p>
+                <p>{user.personalInfo.children}</p>
               </div>
               <div className="info-item">
                 <label>Type of Residence</label>
-                <p>Parent's Apartment</p>
+                <p>{user.personalInfo.residence}</p>
               </div>
             </div>
           </div>
@@ -97,31 +114,31 @@ const UserDetailsPage: React.FC = () => {
             <div className="info-group">
               <div className="info-item">
                 <label>Level of Education</label>
-                <p>B.Sc</p>
+                <p>{user.educationEmployment.education}</p>
               </div>
               <div className="info-item">
                 <label>Employment Status</label>
-                <p>Employed</p>
+                <p>{user.educationEmployment.employmentStatus}</p>
               </div>
               <div className="info-item">
                 <label>Sector of Employment</label>
-                <p>Fintech</p>
+                <p>{user.educationEmployment.sector}</p>
               </div>
               <div className="info-item">
                 <label>Duration of Employment</label>
-                <p>2 years</p>
+                <p>{user.educationEmployment.duration}</p>
               </div>
               <div className="info-item">
                 <label>Office Email</label>
-                <p>grace@lendsqr.com</p>
+                <p>{user.educationEmployment.officeEmail}</p>
               </div>
               <div className="info-item">
                 <label>Monthly Income</label>
-                <p>₦200,000.00 - ₦400,000.00</p>
+                <p>{user.educationEmployment.monthlyIncome}</p>
               </div>
               <div className="info-item">
                 <label>Loan Repayment</label>
-                <p>40,000</p>
+                <p>{user.educationEmployment.loanRepayment}</p>
               </div>
             </div>
           </div>
@@ -131,15 +148,15 @@ const UserDetailsPage: React.FC = () => {
             <div className="info-group">
               <div className="info-item">
                 <label>Twitter</label>
-                <p>@grace_effiom</p>
+                <p>{user.socials.twitter}</p>
               </div>
               <div className="info-item">
                 <label>Facebook</label>
-                <p>Grace Effiom</p>
+                <p>{user.socials.facebook}</p>
               </div>
               <div className="info-item">
                 <label>Instagram</label>
-                <p>@grace_effiom</p>
+                <p>{user.socials.instagram}</p>
               </div>
             </div>
           </div>
@@ -149,40 +166,19 @@ const UserDetailsPage: React.FC = () => {
             <div className="info-group">
               <div className="info-item">
                 <label>Full Name</label>
-                <p>Debby Ogana</p>
+                <p>{user.guarantor.fullName}</p>
               </div>
               <div className="info-item">
                 <label>Phone Number</label>
-                <p>07060780922</p>
+                <p>{user.guarantor.phoneNumber}</p>
               </div>
               <div className="info-item">
                 <label>Email Address</label>
-                <p>debby@gmail.com</p>
+                <p>{user.guarantor.email}</p>
               </div>
               <div className="info-item">
                 <label>Relationship</label>
-                <p>Sister</p>
-              </div>
-            </div>
-          </div>
-          <hr />
-          <div className="section">
-            <div className="info-group">
-              <div className="info-item">
-                <label>Full Name</label>
-                <p>Debby Ogana</p>
-              </div>
-              <div className="info-item">
-                <label>Phone Number</label>
-                <p>07060780922</p>
-              </div>
-              <div className="info-item">
-                <label>Email Address</label>
-                <p>debby@gmail.com</p>
-              </div>
-              <div className="info-item">
-                <label>Relationship</label>
-                <p>Sister</p>
+                <p>{user.guarantor.relationship}</p>
               </div>
             </div>
           </div>

@@ -12,17 +12,17 @@
     transition: margin-left 0.3s;
 
     &.collapsed {
-      margin-left: 80px;
+      margin-left: 100px;
     }
 
     @media (max-width: 768px) {
-      margin-left: 80px;
+      margin-left: 100px;
     }
 
     .back-button {
       background: none;
       border: none;
-      color: #1f2d3d;
+      color: $primary-color;
       cursor: pointer;
       margin-bottom: 20px;
     }
@@ -35,7 +35,7 @@
 
       h2 {
         margin: 0;
-        color: #1f2d3d;
+        color: $primary-color;
       }
 
       .action-buttons {
@@ -48,7 +48,7 @@
           border-radius: 4px;
           cursor: pointer;
           font-size: 14px;
-          color: #1f2d3d;
+          color: $primary-color;
           background: none;
         }
 
@@ -92,7 +92,7 @@
         .user-basic-info {
           h2 {
             margin: 0;
-            color: #1f2d3d;
+            color: $primary-color;
           }
 
           p {
@@ -102,6 +102,11 @@
         }
 
         .user-tier {
+          border-left: 1px solid #7b8794;
+          border-right: 1px solid #7b8794;
+          padding: 0 2rem;
+          display: flex;
+          flex-direction: column;
           margin-top: 10px;
           color: #10b981;
           font-size: 14px;
@@ -115,7 +120,7 @@
 
           h2 {
             margin: 0;
-            color: #1f2d3d;
+            color: $primary-color;
           }
 
           p {
@@ -163,6 +168,7 @@
 
           &.active {
             border-bottom-color: #10b981;
+            color: #10b981;
           }
         }
       }
@@ -179,7 +185,7 @@
 
         h3 {
           margin-bottom: 10px;
-          color: #1f2d3d;
+          color: $primary-color;
         }
 
         .info-group {
@@ -199,7 +205,7 @@
 
             p {
               font-size: 14px;
-              color: #1f2d3d;
+              color: $primary-color;
               margin: 5px 0 0;
             }
           }
