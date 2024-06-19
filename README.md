@@ -4,7 +4,7 @@ This repository contains the solution for the Lendsqr Frontend Engineering Asses
 
 Login Detail
 
-Any Email and Password would work for this as Api authentication was implemented or provided
+Any Email and Password would work for this as Api authentication was not implemented or provided
 
 Features Implemented
 
