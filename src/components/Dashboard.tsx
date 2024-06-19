@@ -11,28 +11,28 @@ const Dashboard: React.FC = () => (
         title="Users"
         count={2453}
         icon="userIcon"
-        iconBgColor="#fce4ec"
+        iconBgColor="#FCE8FF"
         iconColor="#DF18FF"
       />
       <UserCard
         title="Active Users"
         count={2453}
         icon="activeUserIcon"
-        iconBgColor="#f3e5f5"
+        iconBgColor="#efe8ff"
         iconColor="#5718FF"
       />
       <UserCard
         title="Users with Loans"
         count={12453}
         icon="loanUserIcon"
-        iconBgColor="#ffebee"
+        iconBgColor="FEEFED"
         iconColor="#F55F44"
       />
       <UserCard
         title="Users with Savings"
         count={102453}
         icon="savingUserIcon"
-        iconBgColor="#e0f7fa"
+        iconBgColor="#FFEBF0"
         iconColor="#FF3366"
       />
     </div>

@@ -58,8 +58,8 @@
         }
 
         .activate-button {
-          border-color: #10b981;
-          color: #10b981;
+          border-color: $secondary-color;
+          color: $secondary-color;
         }
       }
     }
@@ -82,7 +82,7 @@
           width: 80px;
           height: 80px;
           border-radius: 50%;
-          background: #f5f5f5;
+          background: $light-gray;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -97,13 +97,13 @@
 
           p {
             margin: 0;
-            color: #7b8794;
+            color: $text-color;
           }
         }
 
         .user-tier {
-          border-left: 1px solid #7b8794;
-          border-right: 1px solid #7b8794;
+          border-left: 1px solid $text-color;
+          border-right: 1px solid $text-color;
           padding: 0 2rem;
           display: flex;
           flex-direction: column;
@@ -125,11 +125,11 @@
 
           p {
             margin: 0;
-            color: #7b8794;
+            color: $text-color;
           }
           hr {
             border: none;
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid $primary-color;
             margin: 20px 0;
           }
           button {
@@ -148,7 +148,7 @@
           }
 
           .activate-button {
-            background: #10b981;
+            background: $secondary-color;
           }
         }
       }
@@ -164,11 +164,11 @@
           padding: 10px 20px;
           border-bottom: 2px solid transparent;
           cursor: pointer;
-          color: #1f2d3d;
+          color: $primary-color;
 
           &.active {
-            border-bottom-color: #10b981;
-            color: #10b981;
+            border-bottom-color: $secondary-color;
+            color: $secondary-color;
           }
         }
       }
@@ -199,13 +199,14 @@
 
             label {
               font-size: 12px;
-              color: #7b8794;
+              color: $text-color;
               display: block;
             }
 
             p {
               font-size: 14px;
-              color: $primary-color;
+              color: $text-color;
+              font-weight: bold;
               margin: 5px 0 0;
             }
           }

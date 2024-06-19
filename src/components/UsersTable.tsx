@@ -13,7 +13,7 @@ import "./UsersTable.scss";
 const UsersTable: React.FC = () => {
   const [users, setUsers] = useState(mockUsers);
   const [currentPage, setCurrentPage] = useState(0);
-  const [itemsPerPage] = useState(10); // Number of users to show per page
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<number | null>(null);
   const navigate = useNavigate();
@@ -212,18 +212,36 @@ const UsersTable: React.FC = () => {
           </tbody>
         </table>
       </div>
-      <ReactPaginate
-        previousLabel={"Previous"}
-        nextLabel={"Next"}
-        breakLabel={"..."}
-        breakClassName={"break-me"}
-        pageCount={pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={handlePageClick}
-        containerClassName={"pagination"}
-        activeClassName={"active"}
-      />
+      <div className="pagination-info">
+        <div className="select">
+          <span>Showing</span>
+          <div className="select-wrapper">
+            <select
+              style={{ backgroundColor: "#e5e8ee" }}
+              value={itemsPerPage}
+              onChange={(e) => setItemsPerPage(Number(e.target.value))}
+            >
+              <option value={10}>10</option>
+              <option value={20}>20</option>
+              <option value={50}>50</option>
+              <option value={100}>100</option>
+            </select>
+          </div>
+          <span>out of {users.length}</span>
+        </div>
+        <ReactPaginate
+          previousLabel={"<"}
+          nextLabel={">"}
+          breakLabel={"..."}
+          breakClassName={"break-me"}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={3}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination"}
+          activeClassName={"active"}
+        />
+      </div>
     </div>
   );
 };
