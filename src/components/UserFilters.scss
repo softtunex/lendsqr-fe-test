@@ -1,10 +1,11 @@
 @import "../assets/styles/mixins";
+@import "../assets/styles/variables";
 
 .user-filters {
   background: white;
   padding: 20px;
   border-radius: 8px;
-  @include box-shadow;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -17,7 +18,7 @@
 
     label {
       font-size: 14px;
-      color: #7b8794;
+      color: $primary-color;
     }
 
     input,
@@ -42,12 +43,12 @@
     }
 
     .reset-button {
-      background: #f5f5f5;
-      color: #7b8794;
+      background: $light-gray;
+      color: $text-color;
     }
 
     .filter-button {
-      background: #10b981;
+      background: $secondary-color;
       color: white;
     }
   }

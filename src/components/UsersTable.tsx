@@ -5,7 +5,6 @@ import { users as mockUsers } from "../utils/mockData";
 import { getUniqueValues } from "../utils/utils";
 import { saveUserDetails } from "../utils/localStorageUtil";
 import UserFilters from "./UserFilters";
-import Modal from "./Modal";
 import { FaEye, FaBan, FaUserCheck, FaEllipsisV } from "react-icons/fa";
 import { IoFilter } from "react-icons/io5";
 import "./UsersTable.scss";
@@ -14,7 +13,8 @@ const UsersTable: React.FC = () => {
   const [users, setUsers] = useState(mockUsers);
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(10);
-  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false);
+  const [filterPosition, setFilterPosition] = useState({ top: 0, left: 0 });
   const [activeMenu, setActiveMenu] = useState<number | null>(null);
   const navigate = useNavigate();
 
@@ -59,7 +59,7 @@ const UsersTable: React.FC = () => {
 
     setUsers(filteredUsers);
     setCurrentPage(0); // Reset to the first page after filtering
-    setIsFilterModalOpen(false); // Close the modal after filtering
+    setIsFilterDropdownOpen(false); // Close the dropdown after filtering
   };
 
   const handleEllipsisClick = (e: React.MouseEvent, userId: number) => {
@@ -104,18 +104,33 @@ const UsersTable: React.FC = () => {
   const currentPageData = users.slice(offset, offset + itemsPerPage);
   const pageCount = Math.ceil(users.length / itemsPerPage);
 
+  const handleFilterIconClick = (
+    event: React.MouseEvent<HTMLSpanElement>,
+    columnIndex: number
+  ) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const columnOffset = 20;
+    setFilterPosition({
+      top: rect.bottom + window.scrollY,
+      left: rect.left + window.scrollX - columnOffset * columnIndex,
+    });
+    setIsFilterDropdownOpen(!isFilterDropdownOpen);
+  };
+
   return (
     <div className="users-table-container">
-      <Modal
-        isOpen={isFilterModalOpen}
-        onClose={() => setIsFilterModalOpen(false)}
-      >
-        <UserFilters
-          onFilter={handleFilter}
-          organizations={organizations}
-          statuses={statuses}
-        />
-      </Modal>
+      {isFilterDropdownOpen && (
+        <div
+          className="filter-dropdown"
+          style={{ top: filterPosition.top, left: filterPosition.left }}
+        >
+          <UserFilters
+            onFilter={handleFilter}
+            organizations={organizations}
+            statuses={statuses}
+          />
+        </div>
+      )}
       <div className="table-wrapper">
         <table className="users-table">
           <thead>
@@ -123,48 +138,48 @@ const UsersTable: React.FC = () => {
               <th>
                 <p>
                   ORGANIZATION
-                  <span>
-                    <IoFilter onClick={() => setIsFilterModalOpen(true)} />
+                  <span onClick={(e) => handleFilterIconClick(e, 0)}>
+                    <IoFilter />
                   </span>
                 </p>
               </th>
               <th>
                 <p>
                   USERNAME
-                  <span>
-                    <IoFilter onClick={() => setIsFilterModalOpen(true)} />
+                  <span onClick={(e) => handleFilterIconClick(e, 1)}>
+                    <IoFilter />
                   </span>
                 </p>
               </th>
               <th>
                 <p>
                   EMAIL
-                  <span>
-                    <IoFilter onClick={() => setIsFilterModalOpen(true)} />
+                  <span onClick={(e) => handleFilterIconClick(e, 2)}>
+                    <IoFilter />
                   </span>
                 </p>
               </th>
               <th>
                 <p>
                   PHONE NUMBER
-                  <span>
-                    <IoFilter onClick={() => setIsFilterModalOpen(true)} />
+                  <span onClick={(e) => handleFilterIconClick(e, 3)}>
+                    <IoFilter />
                   </span>
                 </p>
               </th>
               <th>
                 <p>
                   DATE JOINED
-                  <span>
-                    <IoFilter onClick={() => setIsFilterModalOpen(true)} />
+                  <span onClick={(e) => handleFilterIconClick(e, 4)}>
+                    <IoFilter />
                   </span>
                 </p>
               </th>
               <th>
                 <p>
                   STATUS
-                  <span>
-                    <IoFilter onClick={() => setIsFilterModalOpen(true)} />
+                  <span onClick={(e) => handleFilterIconClick(e, 5)}>
+                    <IoFilter />
                   </span>
                 </p>
               </th>

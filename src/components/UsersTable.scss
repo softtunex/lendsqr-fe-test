@@ -10,10 +10,16 @@
   flex-direction: column;
   gap: 20px;
 
-  .filters {
-    margin-bottom: 20px;
+  .filter-dropdown {
+    position: absolute;
+    z-index: 1000;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    margin-left: -120px;
   }
-
   .table-wrapper {
     overflow-x: auto;
   }
